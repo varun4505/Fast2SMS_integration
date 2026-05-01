@@ -1,0 +1,23 @@
+-- MySQL schema for OTP demo
+
+CREATE TABLE IF NOT EXISTS users (
+  id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
+  name VARCHAR(191) NULL,
+  phone VARCHAR(10) NOT NULL,
+  created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (id),
+  UNIQUE KEY uk_users_phone (phone)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+CREATE TABLE IF NOT EXISTS otp_requests (
+  id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
+  phone VARCHAR(10) NOT NULL,
+  flow ENUM('LOGIN','SIGNUP') NOT NULL,
+  otp_hash VARCHAR(255) NOT NULL,
+  attempt_count INT NOT NULL DEFAULT 0,
+  expires_at TIMESTAMP NOT NULL,
+  consumed_at TIMESTAMP NULL,
+  created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (id),
+  KEY idx_otp_phone_flow_created (phone, flow, created_at)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
