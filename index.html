@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>OTP Demo</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="container">
+      <header class="header">
+        <h1>PlayBase Phone Auth Demo</h1>
+        <p class="muted">India (+91) phone OTP via Fast2SMS</p>
+      </header>
+
+      <section class="card">
+        <div class="tabs" role="tablist" aria-label="Auth mode">
+          <button id="tab-login" class="tab" type="button" role="tab" aria-selected="true">Login</button>
+          <button id="tab-signup" class="tab" type="button" role="tab" aria-selected="false">Signup</button>
+        </div>
+
+        <div id="screen-login" class="screen" data-screen>
+          <h2>Login</h2>
+          <form id="form-login" class="form">
+            <label class="field">
+              <span>Phone</span>
+              <div class="phone">
+                <span class="prefix">+91</span>
+                <input id="login-phone" inputmode="numeric" autocomplete="tel" placeholder="10-digit number" maxlength="10" />
+              </div>
+            </label>
+            <button id="btn-login-send" class="primary" type="submit">Send OTP</button>
+          </form>
+        </div>
+
+        <div id="screen-signup" class="screen hidden" data-screen>
+          <h2>Signup</h2>
+          <form id="form-signup" class="form">
+            <label class="field">
+              <span>Name</span>
+              <input id="signup-name" autocomplete="name" placeholder="Your name" />
+            </label>
+            <label class="field">
+              <span>Phone</span>
+              <div class="phone">
+                <span class="prefix">+91</span>
+                <input id="signup-phone" inputmode="numeric" autocomplete="tel" placeholder="10-digit number" maxlength="10" />
+              </div>
+            </label>
+            <button id="btn-signup-send" class="primary" type="submit">Send OTP</button>
+          </form>
+        </div>
+
+        <div id="screen-verify" class="screen hidden" data-screen>
+          <h2>Verify OTP</h2>
+          <p class="muted" id="verify-subtitle">We sent an OTP to your phone.</p>
+          <form id="form-verify" class="form">
+            <label class="field">
+              <span>OTP</span>
+              <input id="verify-otp" inputmode="numeric" autocomplete="one-time-code" placeholder="6-digit OTP" maxlength="6" />
+            </label>
+            <div class="row">
+              <button id="btn-verify" class="primary" type="submit">Verify</button>
+              <button id="btn-resend" class="secondary" type="button">Resend</button>
+            </div>
+          </form>
+        </div>
+
+        <div id="screen-success" class="screen hidden" data-screen>
+          <h2>Success</h2>
+          <p class="muted">OTP verified.</p>
+          <div class="summary" id="success-summary"></div>
+          <button id="btn-start-over" class="secondary" type="button">Start over</button>
+        </div>
+
+        <div id="status" class="status" aria-live="polite"></div>
+      </section>
+    </main>
+
+    <script src="./app.js" defer></script>
+  </body>
+</html>
