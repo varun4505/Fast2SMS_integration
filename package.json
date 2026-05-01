@@ -8,11 +8,11 @@
   },
   "scripts": {
     "dev": "vercel dev",
-    "lint": "node -c api/request-otp.js && node -c api/verify-otp.js"
+    "lint": "node -c api/request-otp.js && node -c api/verify-otp.js && node -c api/health.js && node -c api/_lib/mongo.js"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
-    "mysql2": "^3.11.4"
+    "mongodb": "^6.7.0"
   },
   "devDependencies": {
     "vercel": "^34.3.0"
