@@ -1,0 +1,20 @@
+{
+  "name": "otp-fast2sms-integration",
+  "private": true,
+  "version": "0.1.0",
+  "type": "commonjs",
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "dev": "vercel dev",
+    "lint": "node -c api/request-otp.js && node -c api/verify-otp.js"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "mysql2": "^3.11.4"
+  },
+  "devDependencies": {
+    "vercel": "^34.3.0"
+  }
+}
